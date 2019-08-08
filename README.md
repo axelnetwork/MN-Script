@@ -1,4 +1,4 @@
-# AXEL MN Setup Guide
+# AXEL MN Setup Script
 
 Usage:
 ```
