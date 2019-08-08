@@ -1,19 +1,13 @@
-# MN-Setup Guide (Follow below Steps)
+# AXEL MN Setup Guide
 
-wget -q https://raw.githubusercontent.com/axelnetwork/MN-Script/master/AXEL-MN.sh
+Usage:
+```
+# first (preparation) step
+cd /root && rm -f ./axel-install.sh && wget https://github.com/axelnetwork/MN-Script/blob/master/axel-install.sh && chmod u+x ./axel-install.sh
+# second (installation) step (one of both commands below)
+/root/axel-install.sh
+mv /root/.axel/debug.log /root/.axel/debug.log-$(date +%y%m%d%H%M) && /root/axel-install.sh --upgrade && axel-cli -version
+```
+It will be required to enter a masternode private key on `Enter your AXEL Masternode Private Key:` prompt during the initial installation.
 
-sudo chmod +x AXEL-MN.sh
-
-./AXEL-MN.sh
-
-When prompted to Enter your AXEL_Utility_Token Masternode GEN Key.
-
-Paster your Masternode GEN Key and press enter
-
-Wait till Node is fully Synced with blockchain. For check enter below command.
-
-axel_utility_token-cli getinfo
-
-When Node Fully Synced enter below command for check masternode status.
-
-axel_utility_token-cli masternode status
+After script's execution just wait for a node's full sync (use `axel-cli getinfo` command for checking of blockchain status, and `axel-cli masternode status` for checking of masternode status).
