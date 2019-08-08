@@ -3,7 +3,7 @@
 Usage:
 ```
 # first (preparation) step
-cd /root && rm -f ./axel-install.sh && wget https://github.com/axelnetwork/MN-Script/blob/master/axel-install.sh && chmod u+x ./axel-install.sh
+cd /root && rm -f ./axel-install.sh && wget https://raw.githubusercontent.com/axelnetwork/MN-Script/master/axel-install.sh && chmod u+x ./axel-install.sh
 # second (installation) step (one of both commands below)
 /root/axel-install.sh
 mv /root/.axel/debug.log /root/.axel/debug.log-$(date +%y%m%d%H%M) && /root/axel-install.sh --upgrade && axel-cli -version
