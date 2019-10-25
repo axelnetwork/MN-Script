@@ -14,7 +14,7 @@
 
 COIN_NAME="AXEL"
 COIN_PORT=32323
-COIN_VERSION="1.1.3"
+COIN_VERSION="1.1.5"
 COIN_REPO="https://github.com/axelnetwork/${COIN_NAME}/releases/download/v.${COIN_VERSION}/${COIN_NAME}-${COIN_VERSION}-linux-gnu.tar.gz"
 
 COIN_NAME_LOWER=$(echo $COIN_NAME | awk '{ print tolower($0) }')
