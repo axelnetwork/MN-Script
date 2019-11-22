@@ -58,7 +58,6 @@ progressfilt () {
   done
 }
 
-
 function compile_node() {
   echo -e "Prepare to download $COIN_NAME"
   TMP_FOLDER=$(mktemp -d)
@@ -66,17 +65,15 @@ function compile_node() {
   COIN_ZIP=$(echo $COIN_REPO | awk -F'/' '{print $NF}')
   wget -O $COIN_ZIP --progress=bar:force $COIN_REPO 2>&1 | progressfilt
   compile_error
-# TODO: to fix
+# TODO: to enhance
   COIN_VER=$(echo $COIN_ZIP | awk -F'/' '{print $NF}' | sed -n 's/.*\([0-9]\.[0-9]\.[0-9]\).*/\1/p')
-#  COIN_VER=$(echo $COIN_ZIP | awk -F'/' '{print $NF}' | sed -n 's/.*\([0-9]\.[0-9][0-9]\.[0-9]\).*/\1/p')
-  COIN_DIR=$(echo ${COIN_NAME,,}-$COIN_VER)
-  tar xvf $COIN_ZIP --strip=1 "${COIN_DIR}/${COIN_NAME,,}d" "${COIN_DIR}/${COIN_NAME,,}-tx" "${COIN_DIR}/${COIN_NAME,,}-cli" # >/dev/null 2>&1
+  tar xvf $COIN_ZIP >/dev/null 2>&1
   compile_error
-  rm -f $COIN_ZIP # >/dev/null 2>&1
-  cp ${COIN_NAME_LOWER}* /usr/local/bin
+  rm -f $COIN_ZIP >/dev/null 2>&1
+  cp ./*/* /usr/local/bin
   compile_error
-  cd -
-  rm -rf $TMP_FOLDER # >/dev/null 2>&1
+  cd - >/dev/null 2>&1
+  rm -rf $TMP_FOLDER >/dev/null 2>&1
 }
 
 
