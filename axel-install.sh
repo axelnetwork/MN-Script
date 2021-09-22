@@ -90,7 +90,7 @@ Group=root
 Type=forking
 #PIDFile=$CONFIGFOLDER/$COIN_NAME.pid
 
-ExecStart=$COIN_DAEMON -daemon -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER -debug -logips=1 -forcestart -rescan
+ExecStart=$COIN_DAEMON -daemon -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER -forcestart -rescan
 ExecStop=$COIN_CLI -conf=$CONFIGFOLDER/$CONFIG_FILE -datadir=$CONFIGFOLDER stop
 
 Restart=always
