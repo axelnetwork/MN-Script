@@ -16,7 +16,6 @@ COIN_NAME="AXEL"
 COIN_PORT=32323
 COIN_VERSION="3.1.0"
 COIN_REPO="https://github.com/axelnetwork/${COIN_NAME}/releases/download/v${COIN_VERSION}/${COIN_NAME}-${COIN_VERSION}-linux-gnu.tar.gz"
-
 COIN_NAME_LOWER=$(echo $COIN_NAME | awk '{ print tolower($0) }')
 CONFIG_FILE="${COIN_NAME_LOWER}.conf"
 CONFIGFOLDER="/root/.${COIN_NAME_LOWER}"
