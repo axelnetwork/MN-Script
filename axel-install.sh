@@ -255,7 +255,8 @@ function prepare_system() {
   echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
   sudo add-apt-repository -y ppa:bitcoin/bitcoin
   apt-get update # >/dev/null 2>&1
-  apt-get install -y wget curl ufw binutils net-tools mc libdb4.8-dev libdb4.8++-dev libboost-all-dev libzmq3-dev libminiupnpc-dev # >/dev/null 2>&1
+  apt-get install -y wget curl ufw binutils net-tools mc libdb4.8-dev libdb4.8++-dev libboost-all-dev libzmq3-dev libminiupnpc-dev software-properties-common # >/dev/null 2>&1
+  apt-get update # >/dev/null 2>&1
 }
 
 
