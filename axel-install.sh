@@ -5,7 +5,7 @@
 #
 
 #
-# Usage:
+# Usage (as root):
 #     cd /root && rm -f ./axel-install.sh && wget https://raw.githubusercontent.com/axelnetwork/MN-Script/master/axel-install.sh && chmod u+x ./axel-install.sh
 #     ./axel-install.sh   <-- or -->   mv /root/.axel/debug.log /root/.axel/debug.log-$(date +%y%m%d%H%M) && /root/axel-install.sh --upgrade && axel-cli -version
 #
@@ -253,9 +253,10 @@ function checks() {
 
 function prepare_system() {
   echo -e "Prepare the system to install ${GREEN}$COIN_NAME${NC} master node."
-  sudo add-apt-repository -y ppa:bitcoin/bitcoin
   apt-get update # >/dev/null 2>&1
-  apt-get install -y wget curl ufw binutils net-tools mc libdb4.8-dev libdb4.8++-dev libboost-all-dev libzmq3-dev libminiupnpc-dev software-properties-common # >/dev/null 2>&1
+  apt-get install -y software-properties-common
+  add-apt-repository -y ppa:bitcoin/bitcoin
+  apt-get install -y wget curl ufw binutils net-tools libdb4.8-dev libdb4.8++-dev libboost-all-dev libzmq3-dev libminiupnpc-dev # >/dev/null 2>&1
   apt-get update # >/dev/null 2>&1
 }
 
