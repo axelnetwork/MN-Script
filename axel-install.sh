@@ -226,12 +226,16 @@ function compile_error() {
 
 
 function detect_ubuntu() {
-  if [[ $(lsb_release -d) == *18.04* ]]; then
+  if [[ $(lsb_release -d) == *22.04* ]]; then
+    UBUNTU_VERSION=22
+  elif [[ $(lsb_release -d) == *20.04* ]]; then
+    UBUNTU_VERSION=20
+  elif [[ $(lsb_release -d) == *18.04* ]]; then
     UBUNTU_VERSION=18
   elif [[ $(lsb_release -d) == *16.04* ]]; then
-    UBUNTU_VERSION=16
+    UBUNTU_VERSION=16	
   else
-    echo -e "${RED}You are not running Ubuntu 16.04 or 18.04 -installation is cancelled.${NC}"
+    echo -e "${RED}You are not running Ubuntu 16.04, 18.04, 20.04 or 22.04 - The installation has been cancelled.${NC}"
     exit 1
   fi
 }
@@ -266,7 +270,7 @@ function important_information() {
   echo -e "================================================================================"
   echo -e "$COIN_NAME Masternode is up and running listening on port ${RED}$COIN_PORT${NC}."
   echo -e "Configuration file is: ${RED}$CONFIGFOLDER/$CONFIG_FILE${NC}"
-  if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 )); then
+  if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 || $UBUNTU_VERSION == 20 || $UBUNTU_VERSION == 22)); then
     echo -e "Start: ${RED}systemctl start $COIN_NAME.service${NC}"
     echo -e "Stop: ${RED}systemctl stop $COIN_NAME.service${NC}"
     echo -e "Status: ${RED}systemctl status $COIN_NAME.service${NC}"
@@ -301,7 +305,7 @@ function setup_node() {
   then
     systemctl start $COIN_NAME.service
   else
-    if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 )); then
+    if (( $UBUNTU_VERSION == 16 || $UBUNTU_VERSION == 18 || $UBUNTU_VERSION == 20 || $UBUNTU_VERSION == 22)); then
       configure_systemd
     else
       configure_startup
